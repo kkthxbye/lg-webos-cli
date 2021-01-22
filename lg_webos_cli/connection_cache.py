@@ -15,16 +15,12 @@ class ConnectionCache:
     @classmethod
     def write(cls, client: WebOSClient):
         with open(cls.TEMP_FILE_PATH, 'w') as cache:
-            cache.writelines([
-                client.host + '\n',
-                client.key.decode(),
-            ])
+            cache.write(client.host)
 
     @ classmethod
     def read(cls) -> Optional[Tuple[str, bytes]]:
         try:
             with open(cls.TEMP_FILE_PATH, 'r') as cache:
-                addr, key = [x.rstrip('\n') for x in cache.readlines()]
-                return (addr, key)
+                return cache.readline().rstrip('\n') or None
         except FileNotFoundError:
             return None

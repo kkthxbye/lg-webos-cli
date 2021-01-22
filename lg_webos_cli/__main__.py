@@ -23,7 +23,7 @@ controls_subsystems = {
 # args = parser.parse_args()
 
 if __name__ == '__main__':
-    addr, key = ConnectionCache.read() or (None, None)
+    addr = ConnectionCache.read()
     if not addr:
         clients = WebOSClient.discover()
         print(clients)

@@ -1,8 +1,6 @@
 from argparse import ArgumentParser
-from collections import deque
 from logging import getLogger
-from os import environ
-from sys import argv, stdout
+from sys import argv, stdout, exit
 
 from pywebostv.connection import WebOSClient
 from pywebostv.controls import WebOSControlBase
@@ -26,9 +24,19 @@ if __name__ == '__main__':
     addr = ConnectionCache.read()
     if not addr:
         clients = WebOSClient.discover()
-        print(clients)
-
-    client = WebOSClient(addr)
+        clients_indices = range(len(clients) + 1, 1)
+        entered = None
+        while entered is None or entered not in clients_indices:
+            entered = input('\n'.join([
+                *[') '.join([str(i), c.host]) for i, c
+                  in zip(clients_indices, clients)],
+                '(q to quit)\n',
+            ]))
+            if entered == 'q':
+                exit()
+        client = clients[entered]
+    else:
+        client = WebOSClient(addr)
     client.connect()
     store = CredStorage.load(addr)
     for status in client.register(store):

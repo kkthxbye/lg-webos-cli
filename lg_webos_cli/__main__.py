@@ -1,10 +1,12 @@
+import sys
 from argparse import ArgumentParser
 from logging import getLogger
-from sys import argv, stdout, exit
+from sys import stdout
 
 from pywebostv.connection import WebOSClient
 from pywebostv.controls import WebOSControlBase
 
+from lg_webos_cli.caller import call, controls
 from lg_webos_cli.connection_cache import ConnectionCache
 from lg_webos_cli.store import CredStorage
 
@@ -16,11 +18,12 @@ controls_subsystems = {
     for e in subsystem.COMMANDS
 }
 
-# parser = ArgumentParser(description='#TODO')
-# parser.add_argument('method', metavar='method', type=str, help='#TODO')
-# args = parser.parse_args()
-
 if __name__ == '__main__':
+    parser = ArgumentParser(description='LG WebOS CLI wrapper')
+    parser.add_argument('method', type=str, help=', '.join(controls))
+    parser.add_argument('method_args', metavar='arguments', nargs='*', help='Optional arguments')
+    args = parser.parse_args()
+
     addr = ConnectionCache.read()
     if not addr:
         clients = {str(index): client for index, client
@@ -32,7 +35,7 @@ if __name__ == '__main__':
                 '(q to quit)\n',
             ]))
             if entered == 'q':
-                exit()
+                sys.exit()
         client = clients.get(entered)
     else:
         client = WebOSClient(addr)
@@ -44,5 +47,11 @@ if __name__ == '__main__':
             ConnectionCache.write(client)
         if status == WebOSClient.REGISTERED:
             CredStorage.persist(client.host, store)
+    if args.method not in controls:
+        stdout.write(
+            f'No method called "{args.method}".\n'
+            f'Available methods: {", ".join(controls)}'
+        )
+        sys.exit()
 
-    getattr(controls_subsystems[argv[1]](client), argv[1])(*argv[2:])
+    stdout.write(str(call(client, args.method, args.method_args)))

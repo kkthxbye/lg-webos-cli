@@ -34,16 +34,15 @@ if __name__ == '__main__':
             if entered == 'q':
                 exit()
         client = clients.get(entered)
-        addr = client.host
     else:
         client = WebOSClient(addr)
     client.connect()
-    store = CredStorage.load(addr)
+    store = CredStorage.load(client.host)
     for status in client.register(store):
         if status == WebOSClient.PROMPTED:
             print('Please accept the connection on the TV')
             ConnectionCache.write(client)
         if status == WebOSClient.REGISTERED:
-            CredStorage.persist(addr, store)
+            CredStorage.persist(client.host, store)
 
     getattr(controls_subsystems[argv[1]](client), argv[1])(*argv[2:])

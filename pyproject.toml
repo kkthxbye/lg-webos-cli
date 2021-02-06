@@ -3,10 +3,15 @@ name = "lg-webos-cli"
 version = "0.1.0"
 description = ""
 authors = ["Tema Klochko <tema@klochko.ru>"]
+packages = [
+    { include = "lg-webos-cli" },
+    { include = "lg-webos-cli/**/*.py" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 pywebostv = "^0.8.4"
+keyring = "^21.8.0"
 
 [tool.poetry.dev-dependencies]
 

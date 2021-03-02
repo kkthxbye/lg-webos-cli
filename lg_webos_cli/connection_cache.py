@@ -17,7 +17,7 @@ class ConnectionCache:
         with open(cls.TEMP_FILE_PATH, 'w') as cache:
             cache.write(client.host)
 
-    @ classmethod
+    @classmethod
     def read(cls) -> Optional[Tuple[str, bytes]]:
         try:
             with open(cls.TEMP_FILE_PATH, 'r') as cache:

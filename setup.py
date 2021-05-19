@@ -18,7 +18,7 @@ setup(
     python_requires='==3.*,>=3.9.0',
     author='Tema Klochko',
     author_email='tema@klochko.ru',
-    packages=['lg-webos-cli'],
+    packages=['lg_webos_cli'],
     package_dir={"": "."},
     package_data={},
     install_requires=['pywebostv==0.*,>=0.8.4'],

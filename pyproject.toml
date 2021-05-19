@@ -4,8 +4,8 @@ version = "0.1.0"
 description = ""
 authors = ["Tema Klochko <tema@klochko.ru>"]
 packages = [
-    { include = "lg-webos-cli" },
-    { include = "lg-webos-cli/**/*.py" },
+    { include = "lg_webos_cli" },
+    { include = "lg_webos_cli/**/*.py" },
 ]
 
 [tool.poetry.dependencies]
@@ -16,5 +16,5 @@ keyring = "^21.8.0"
 [tool.poetry.dev-dependencies]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["setuptools", "poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

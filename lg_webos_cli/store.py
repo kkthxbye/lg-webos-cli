@@ -6,7 +6,7 @@ from keyring import get_password, set_password
 
 class CredStorage:
 
-    SERVICE_NAME = 'lg_webos_cli'
+    SERVICE_NAME = 'kkthxbye.lg_webos_cli'
 
     @classmethod
     def persist(cls, addr: str, data: Dict[str, str]):

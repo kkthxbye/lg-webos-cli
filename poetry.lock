@@ -53,6 +53,14 @@ optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
+name = "getmac"
+version = "0.8.2"
+description = "Get MAC addresses of remote hosts and local interfaces"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
 name = "idna"
 version = "2.10"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -187,6 +195,14 @@ socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 brotli = ["brotlipy (>=0.6.0)"]
 
 [[package]]
+name = "wakeonlan"
+version = "2.0.1"
+description = "A small python module for wake on lan."
+category = "main"
+optional = false
+python-versions = ">=3.6,<4.0"
+
+[[package]]
 name = "ws4py"
 version = "0.5.1"
 description = "WebSocket client and server library for Python 2 and 3 as well as PyPy"
@@ -197,7 +213,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "50abd5bc881f19e4a576d71281e7b7f035713e5051050d46f3622847bb6d49fc"
+content-hash = "32fe0c231ac3f26e6305bdfbd75e328ddab9fb134f60ee2b1779c9403e339945"
 
 [metadata.files]
 certifi = [
@@ -276,6 +292,10 @@ cryptography = [
 future = [
     {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
 ]
+getmac = [
+    {file = "getmac-0.8.2-py2.py3-none-any.whl", hash = "sha256:2e4aef2dd6c3befccd7cf9e18badddd24ab1992b928e2e811d415ed47137c547"},
+    {file = "getmac-0.8.2.tar.gz", hash = "sha256:d501d20b71856248cfa07a8758192e86a01077910afb8b659a89946c4d52d368"},
+]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},
     {file = "idna-2.10.tar.gz", hash = "sha256:b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"},
@@ -319,6 +339,10 @@ six = [
 urllib3 = [
     {file = "urllib3-1.26.4-py2.py3-none-any.whl", hash = "sha256:2f4da4594db7e1e110a944bb1b551fdf4e6c136ad42e4234131391e21eb5b0df"},
     {file = "urllib3-1.26.4.tar.gz", hash = "sha256:e7b021f7241115872f92f43c6508082facffbd1c048e3c6e2bb9c2a157e28937"},
+]
+wakeonlan = [
+    {file = "wakeonlan-2.0.1-py3-none-any.whl", hash = "sha256:7fbcc3865e94dece9b73ca44334b34b57f19847e30eeb6bd78e38f08a0e4b0df"},
+    {file = "wakeonlan-2.0.1.tar.gz", hash = "sha256:e7c985bbfeea5fddee2cd1f2405505f3aa914a0bc061f8f47d32ce39f9007f51"},
 ]
 ws4py = [
     {file = "ws4py-0.5.1.tar.gz", hash = "sha256:29d073d7f2e006373e6a848b1d00951a1107eb81f3742952be905429dc5a5483"},

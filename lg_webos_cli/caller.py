@@ -2,6 +2,16 @@ from typing import List, Optional
 
 from pywebostv.connection import WebOSClient
 from pywebostv.controls import WebOSControlBase
+from wakeonlan import send_magic_packet
+
+from lg_webos_cli.connection_cache import ConnectionCache
+
+
+class WOLControl(WebOSControlBase):
+    COMMANDS = {
+        "power_on": {}
+    }
+
 
 controls_subsystems = {
     e: (subsystem, opts)

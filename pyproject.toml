@@ -12,6 +12,8 @@ packages = [
 python = "^3.9"
 pywebostv = "^0.8.4"
 keyring = "^21.8.0"
+wakeonlan = "^2.0.1"
+getmac = "^0.8.2"
 
 [tool.poetry.dev-dependencies]
 

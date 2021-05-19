@@ -4,6 +4,7 @@ from logging import getLogger
 from sys import stdout
 
 from pywebostv.connection import WebOSClient
+from wakeonlan import send_magic_packet
 
 from lg_webos_cli.caller import call, controls, controls_subsystems
 from lg_webos_cli.connection_cache import ConnectionCache
@@ -19,7 +20,12 @@ def main():
     parser.add_argument('method_args', metavar='arguments', nargs='*', help='Method arguments ([arg])')
     args = parser.parse_args(None if sys.argv[1:] else ['-h'])
 
-    addr = ConnectionCache.read()
+    if args.method == 'power_on':
+        # TODO figure out how to enumerate network interfaces and find broadcast ip addr (netifaces?)
+        send_magic_packet(ConnectionCache.read_mac(), ip_address='192.168.15.255')
+        sys.exit()
+
+    addr = ConnectionCache.read_addr()
     if not addr:
         clients = {str(index): client for index, client
                    in enumerate(WebOSClient.discover(), 1)}

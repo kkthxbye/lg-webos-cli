@@ -22,4 +22,8 @@ setup(
     package_dir={"": "."},
     package_data={},
     install_requires=['pywebostv==0.*,>=0.8.4'],
+    entry_points="""
+        [console_scripts]
+        lg-webos-cli=lg_webos_cli.main:main
+    """,
 )
